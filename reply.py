@@ -21,7 +21,5 @@ def reply_to_mentions():
                                                text=f"@{screen_name} {reply}")
             except Exception:
                 print("api limit probably reached")
-    else:
-        print("no new mentions to reply to")
 
     Handle_Last_mention_id.write_last_mention_id(last_mention_id)
