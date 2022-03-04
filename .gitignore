@@ -1,0 +1,5 @@
+vnev
+.idea
+.vscode
+__pycache__
+.env*
