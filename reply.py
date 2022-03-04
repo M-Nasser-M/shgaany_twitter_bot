@@ -16,7 +16,7 @@ def reply_to_mentions():
             screen_name = mention.user.screen_name
             last_mention_id = mention.id
             try:
-                reply = reply_list[random.randint(0, (len(reply_list) - 1))]
+                reply = reply_list[random.randint(0, ((len(reply_list) - 1)))]
                 Config_api.client.create_tweet(in_reply_to_tweet_id=mention.id,
                                                text=f"@{screen_name} {reply}")
             except Exception:
