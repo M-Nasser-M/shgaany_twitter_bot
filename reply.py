@@ -1,9 +1,11 @@
 from Config import Config_api
-from Utils import Handle_Last_mention_id
+from Utils import Get_replies_list, Handle_Last_mention_id
 import random
 
+reply_list = Get_replies_list.get_reply_list()
 
-def reply_to_mentions(replies):
+
+def reply_to_mentions():
     last_mention_id = Handle_Last_mention_id.get_last_mention_id()
     if last_mention_id:
         mentions = Config_api.api.mentions_timeline(since_id=last_mention_id)
@@ -14,7 +16,7 @@ def reply_to_mentions(replies):
             screen_name = mention.user.screen_name
             last_mention_id = mention.id
             try:
-                reply = replies[random.randint(0, (len(replies) - 1))]
+                reply = reply_list[random.randint(0, (len(reply_list) - 1))]
                 Config_api.client.create_tweet(in_reply_to_tweet_id=mention.id,
                                                text=f"@{screen_name} {reply}")
             except Exception:
